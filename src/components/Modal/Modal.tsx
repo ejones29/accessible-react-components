@@ -1,22 +1,40 @@
-import { useEffect, useRef, useCallback } from "react";
-import { createPortal } from "react-dom";
 
+/*
+Accessible Modal Component Requirements:
+- the element that will be our modal container needs to have role of dialog
+- the modal container needs to have aria-modal set to true
+- the modal container needs to have either aria-labelledby or aria-label
+- clicking outside the modal (or backdrop) will close the modal
+- keyboard interaction where:
+    - Esc key closes the modal
+    - pressing Shift moves the focus to the next tabbable element inside the modal
+    - pressing Shift + Tab moves the focus to the previous tabbable element
+- when open, interaction outside the modal should not be possible, such as scrolling
+- focus should be trapped inside the modal
+*/
+
+import { useEffect, useCallback } from "react";
+import { createPortal } from "react-dom";
+import './Modal.css';
+import FocusLock from 'react-focus-lock';
 export interface ModalProps {
-  isOpen?: boolean;
-  onClose?: () => void;
-  children: React.ReactNode;
+  isOpen: boolean;
+  onClose: () => void;
+  children?: React.ReactNode;
   title?: string;
+  description?: string;
 }
 
-export const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
-// Close on ESC
+export const Modal = ({ isOpen, onClose, children, title, description }: ModalProps) => {
+  // Close on ESC Keydown
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === "Escape") onClose();
+      if (e.key === "Escape" || e.keyCode === 27 && isOpen) onClose();
     },
-    [onClose]
+    [onClose, isOpen]
   );
 
+  // Disable Scrolling and Attach Keydown Listener
   useEffect(() => {
     if (isOpen) {
       document.addEventListener("keydown", handleKeyDown);
@@ -25,43 +43,55 @@ export const Modal = ({ isOpen, onClose, children, title }: ModalProps) => {
       document.body.style.overflow = "";
     }
 
-    return () => document.removeEventListener("keydown", handleKeyDown);
+    // Cleanup - Remove Listener and Enable Scrolling and avoid memory leaks
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.body.style.overflow = "";
+    };
   }, [isOpen, handleKeyDown]);
 
   if (!isOpen) return null;
 
- 
 
   return createPortal(
-    <div
-      className="fixed inset-0 z-50 flex items-center justify-center"
-      aria-modal="true"
-      role="dialog"
-    >
-      {/* Modal content */}
+    <FocusLock>
       <div
-        className="relative z-10 w-11/12 max-w-lg rounded bg-white p-6 shadow-lg"
-        role="document"
-        aria-labelledby={title ? "modal-title" : undefined}
+        className="modal-backdrop"
+        onClick={onClose}
       >
-        {title && (
-          <h2 id="modal-title" className="mb-4 text-xl font-bold">
-            {title}
-          </h2>
-        )}
-        
+        <div
+          className="modal-content"
+          aria-modal="true"
+          role="dialog"
+          aria-labelledby={title ? "modal-title" : undefined}
+          aria-describedby={description ? "modal-description" : undefined}
+          tabIndex={-1}
+        >
+          {title && (
+            <h2 id="modal-title" className="mb-4 text-xl font-bold">
+              {title}
+            </h2>
+          )}
+
+          {description && (
+            <p id="modal-description" className="mb-4 text-gray-700">
+              {description}
+            </p>
+          )}
+          
           <button
             onClick={onClose}
             aria-label="Close modal"
-            className="absolute right-4 top-4 text-gray-500 hover:text-black"
+            className="modal-close-btn absolute right-4 top-4 text-gray-500 hover:text-black"
           >
             ✕
           </button>
-      
-
-        {children}
+        
+          {children}
+          
+        </div>
       </div>
-    </div>,
+      </FocusLock>,
     document.body
   );
 };

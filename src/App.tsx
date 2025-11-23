@@ -1,10 +1,12 @@
-import {useState} from 'react';
+
 import './App.css';
 import Modal from './components/Modal/Modal';
 import { Button } from './components/Button/Button';
+import {useModal} from './hooks/useModal';
 
 function App() {
-    const [isModalOpen, setIsModalOpen] = useState(false);
+  const { isOpen, toggleModal } = useModal();
+  
   return (
     <>
       <div>
@@ -22,21 +24,19 @@ function App() {
         {/* Modal */}
         <div>
           <h2>Modal Component</h2>
-          <Button primary={true} label="Open Modal" onClick={() => setIsModalOpen(true)} />
+          <Button primary={true} label="Open Modal" onClick={toggleModal} />
           <Modal
-            isOpen={isModalOpen}
-            onClose={() => setIsModalOpen(false)}
+            isOpen={isOpen}
+            onClose={toggleModal}
+            title="Accessible Modal"
+            description="This reusable modal component supports keyboard navigation and focus trapping."
           >
-          <h2 className="text-xl font-semibold mb-3">Welcome!</h2>
-          <p className="mb-4">
-            This is an example of using your reusable modal component.
-          </p>
-
-          <Button
-            onClick={() => setIsModalOpen(false)}
-            label="Close Modal"
-          >
-          </Button>
+            <p>Component built to comply with <a href="https://www.w3.org/WAI/standards-guidelines/wcag/" target="_blank" rel="noopener noreferrer">W3C accessibility standards</a>.</p>
+            <Button
+              onClick={toggleModal}
+              label="Close Modal"
+            >
+            </Button>
           </Modal>
         </div>
        </div>

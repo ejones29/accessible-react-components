@@ -6,25 +6,23 @@ import {useModal} from './hooks/useModal';
 
 function App() {
   const { isOpen, toggleModal } = useModal();
-  
+
   return (
     <>
       <div>
         <h1>Accessible React Components</h1>
         
         {/* Buttons */}
-        <div>
-          <h2>Button Component</h2>
+        {/* <div className="section">
+          <h2>Buttons</h2>
           <Button primary={true} label="Primary Button" onClick={() => alert('Primary Button Clicked!')} />
           <Button label="Secondary Button" onClick={() => alert('Secondary Button Clicked!')} />
-        </div>
-        
-        <hr />
+        </div> */}
 
         {/* Modal */}
-        <div>
-          <h2>Modal Component</h2>
-          <Button primary={true} label="Open Modal" onClick={toggleModal} />
+        <div className="section">
+          <h2>Modal</h2>
+          <Button primary={true} label="Open Modal" onClick={toggleModal} size="medium" />
           <Modal
             isOpen={isOpen}
             onClose={toggleModal}

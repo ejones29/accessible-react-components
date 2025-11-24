@@ -30,7 +30,7 @@ const Template = (args: ModalProps) => {
       </button>
 
       <Modal {...args} isOpen={open} onClose={() => setOpen(false)}>
-        <h2 className="text-xl font-semibold mb-2">Modal Title</h2>
+        <h2>Modal Title</h2>
         <p>This is a reusable modal component.</p>
       </Modal>
     </div>

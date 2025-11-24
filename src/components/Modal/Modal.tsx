@@ -66,6 +66,7 @@ export const Modal = ({ isOpen, onClose, children, title, description }: ModalPr
           aria-labelledby={title ? "modal-title" : undefined}
           aria-describedby={description ? "modal-description" : undefined}
           tabIndex={-1}
+          onClick={(e) => e.stopPropagation()}
         >
           {title && (
             <h2 id="modal-title" className="mb-4 text-xl font-bold">

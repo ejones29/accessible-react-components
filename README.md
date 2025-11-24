@@ -35,7 +35,7 @@ A lightweight, production-quality React component library focused on **accessibi
 ### **4. Toast System**
 - Stacking + auto-dismiss  
 - Screen reader live region  
-- Portals + motion-ready  
+- Portals + motion-ready   -->
 
 ---
 
@@ -57,4 +57,4 @@ flowchart TD
   F --> I[ARIA Helpers]
 
   A --> J[Storybook]
-  A --> K[Unit Tests] -->
+  A --> K[Unit Tests]

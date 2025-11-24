@@ -1,17 +1,16 @@
-# WIP
 # Accessible React Components
 
-A lightweight, production-quality React component library focused on **accessibility-first UI design**. Built with **TypeScript, Storybook, React Testing Library, and modern ARIA patterns**. Includes fully accessible components like Modals, Comboboxes, DatePickers, and Toast notifications.
+A lightweight, production-quality React component library focused on **accessibility-first UI design**. Built with **React, TypeScript, Storybook, Vite, and modern ARIA patterns**. Includes fully accessible components like Modals, Comboboxes, DatePickers, and Toast notifications.
 
 ## ✨ Features
 
 - ♿ **WCAG + ARIA compliant** components  
 - ⌨️ Full **keyboard support**  
-- 🧪 **Unit + integration tests** with React Testing Library  
+- 🧪 **Unit + integration tests** with Vite 
 - 📚 **Storybook** documentation  
-- 📦 Published as a consumable component library (optional)  
+<!-- - 📦 Published as a consumable component library (optional)  -->
 - 🧩 Modular architecture  
-- 🔧 Zero external UI dependencies (only React + TS)
+<!-- - 🔧 Zero external UI dependencies (only React + TS) -->
 
 ---
 
@@ -21,9 +20,9 @@ A lightweight, production-quality React component library focused on **accessibi
 - Focus trap  
 - Escape key handling  
 - aria-modal + role="dialog"  
-- Portals for layering  
+<!-- - Portals for layering -->
 
-### **2. Combobox / Autocomplete**
+<!-- ### **2. Combobox / Autocomplete**
 - Fully keyboard navigable  
 - Async filtering support  
 - ARIA listbox semantics  
@@ -58,4 +57,4 @@ flowchart TD
   F --> I[ARIA Helpers]
 
   A --> J[Storybook]
-  A --> K[Unit Tests]
+  A --> K[Unit Tests] -->

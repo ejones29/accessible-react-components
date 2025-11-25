@@ -13,6 +13,7 @@ Accessible Modal Component Requirements:
 - focus should be trapped inside the modal
 */
 
+
 import { useEffect, useCallback } from "react";
 import { createPortal } from "react-dom";
 import './Modal.css';
@@ -29,7 +30,7 @@ export const Modal = ({ isOpen, onClose, children, title, description }: ModalPr
   // Close on ESC Keydown
   const handleKeyDown = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === "Escape" || e.keyCode === 27 && isOpen) onClose();
+      if (e.key === "Escape" && isOpen) onClose();
     },
     [onClose, isOpen]
   );

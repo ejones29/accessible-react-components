@@ -6,7 +6,7 @@ A lightweight, production-quality React component library focused on **accessibi
 
 - ♿ **WCAG + ARIA compliant** components  
 - ⌨️ Full **keyboard support**  
-- 🧪 **Unit + integration tests** with Vite 
+- 🧪 **Unit + integration tests** with Vitest + React Testing Library
 - 📚 **Storybook** documentation  
 <!-- - 📦 Published as a consumable component library (optional)  -->
 - 🧩 Modular architecture  

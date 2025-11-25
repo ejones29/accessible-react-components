@@ -13,6 +13,7 @@ const dirname = typeof __dirname !== 'undefined' ? __dirname : path.dirname(file
 export default defineConfig({
   plugins: [react()],
   test: {
+    environment: 'happy-dom',
     projects: [{
       extends: true,
       plugins: [

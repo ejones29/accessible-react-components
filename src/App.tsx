@@ -2,6 +2,7 @@
 import './App.css';
 import Modal from './components/Modal/Modal';
 import { Button } from './components/Button/Button';
+import Combobox from './components/Combobox/Combobox';
 import {useModal} from './hooks/useModal';
 
 function App() {
@@ -37,7 +38,15 @@ function App() {
             </Button>
           </Modal>
         </div>
-       </div>
+        {/* Combobox */}
+        <div className="section">
+          <h2>Combobox</h2>
+          <Combobox />
+        </div>
+      </div>
+      {/* <div className="footer">
+        <p>Built by <a href="https://ericjones.dev" target="_blank" rel="noopener noreferrer">Eric Jones</a></p>
+       </div> */}
     </>
   )
 }

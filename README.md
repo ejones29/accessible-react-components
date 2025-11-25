@@ -22,12 +22,12 @@ A lightweight, production-quality React component library focused on **accessibi
 - aria-modal + role="dialog"  
 - Portals for layering
 
-<!-- ### **2. Combobox / Autocomplete**
+### **2. Combobox / Autocomplete**
 - Fully keyboard navigable  
 - Async filtering support  
 - ARIA listbox semantics  
 
-### **3. DatePicker**
+<!-- ### **3. DatePicker**
 - Calendar grid with arrow navigation  
 - Screen reader–friendly month/year controls  
 - Single or range selection  
@@ -35,7 +35,7 @@ A lightweight, production-quality React component library focused on **accessibi
 ### **4. Toast System**
 - Stacking + auto-dismiss  
 - Screen reader live region  
-- Portals + motion-ready   -->
+- Portals + motion-ready -->
 
 ---
 
